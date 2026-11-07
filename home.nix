@@ -22,7 +22,6 @@
   home.packages = [
     pkgs.discord
     pkgs.firefox
-    pkgs.fastfetch
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -74,6 +73,55 @@
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
+  };
+
+  # Program settings
+  programs.fastfetch = {
+    enable = true;
+    settings = {
+      "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json";
+      logo = {
+        source = "kde-linux";
+        padding = {
+          top = 4;
+          left = 2;
+        };
+        color = {
+          "1" = "38;2;135;206;235"; # Código ANSI TrueColor para #87CEEB;
+          "2" = "white";
+        };
+      };
+      modules = [
+        "break"
+        {
+          type = "title";
+          color = {
+            user = "38;2;135;206;235"; # Código ANSI TrueColor para #87CEEB;
+            at = "white";
+            host = "38;2;135;206;235"; # Código ANSI TrueColor para #87CEEB;
+          };
+        }
+        "separator"
+        "os"
+        "uptime"
+        "separator"
+        "host"
+        "cpu"
+        "gpu"
+        "memory"
+        "swap"
+        "disk"
+        "separator"
+        "kernel"
+        "terminal"
+        "shell"
+        "de"
+        "wm"
+        "wmtheme"
+        "theme"
+        "break"
+      ];
+    };
   };
 
   # Let Home Manager install and manage itself.
